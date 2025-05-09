@@ -17,6 +17,7 @@ ShieldReduce is an outsourced storage system that improves storage efficiency vi
 The dependencies that ShieldReduce rely on can be directly installed via `apt-get` by following command:
 
 ```bash
+$ sudo apt-get update
 $ sudo apt-get install llvm clang libboost-all-dev libleveldb-dev libjemalloc-dev liblz4-dev libssl-dev jq golang-go
 ```
 Please ensure that the OpenSSL version is 1.1.1l or higher. If the default OpenSSL version obtained from apt-get is older than 1.1.1l, please manually install OpenSSL from this [link](https://www.openssl.org/source/).
@@ -43,6 +44,8 @@ apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y libsgx-launc
 systemctl enable --now aesmd.service
 ```
 - You need to ensure that the version of SGX SSL matches the version of the SGX SDK (not necessarily need to ensure that the version of SGX SSL is the same as the version of Open SSL). For example, when you install SGX SDK v2.15, you need to install SGX SSL for [Linux 2.15.1 SGX SDK, OpenSSL 1.1.1l](https://github.com/intel/intel-sgx-ssl/releases/tag/lin_2.15.1_1.1.1l).
+
+- When building SGX SSL, you may need build tools for building SGX SDK, please refer: [link](https://github.com/intel/linux-sgx?tab=readme-ov-file#prerequisites)
 
 # Build & Usage
 
