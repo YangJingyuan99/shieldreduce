@@ -28,6 +28,8 @@ SGX-related packages:
 
 The above packages can be installed from the corresponding links. In our paper, ShieldReduce is tested with Intel SGX SDK Linux 2.15 and Intel SGX SSL-1.1.1l in Ubuntu 20.04 LTS. 
 
+Here's an SGX configuration tutorial for AliYun instance we've used as a reference that may be useful in helping you build your environment. [link](https://help.aliyun.com/zh/ecs/user-guide/build-an-sgx-encrypted-computing-environment?spm=a2c4g.11186623.help-menu-25365.d_4_1_9_2_0.3d797118MyA838#53b0d34b7cnlu)
+
 **Note that:** to the best of our knowledge, ShieldReduce **does not** compile successfully in newer versions (e.g., 2.25) of the Intel SGX SDK environment. **We strongly recommend that you use the same configuration as in our experiments.**
 
 **Build hints:**
