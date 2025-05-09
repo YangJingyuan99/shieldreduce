@@ -179,6 +179,8 @@ BackupID, OnlineSpeed(MB/s), Encalve ProcessTime(s), BackupSize, OnlineSize, Off
 ...
 ```
 
+You can obtain the data reduction ratio from `OverallReductionRatio` of the last entry.
+
 Can see:
 - ShieldReduce has a similar data reduction ratio as ForwardDelta;
 - ShieldReduce has a higher data reduction ratio than SecureMeGA and DEBE;
@@ -291,7 +293,7 @@ $ sudo umount -l ./ram-client/
 
 The testing process for Exp#3 is exactly the same as for Exp#1, you just need to avoid testing ShieldReduce that with different $\alpha$ (step-4).
 
-The results can be found in `serverlog.csv`, `OnlineSpeed(MB/s)` of each entry:
+You can obtain the upload speed from `OnlineSpeed(MB/s)` of each entry in `serverlog.csv`:
 
 ```shell
 BackupID, OnlineSpeed(MB/s), Encalve ProcessTime(s), BackupSize, OnlineSize, OfflineSize, OfflineTime(s), OverallReductionRatio
@@ -497,7 +499,7 @@ BackupID, OnlineSpeed(MB/s), OnlineTime(s), AverageOnlineTime(s), BackupSize, On
 ...
 ```
 
-You can obtain the average online (offline) time from the `AverageOnlineTime(s)` (`AverageOfflineTime(s)`) in the last entry.
+You can obtain the average online (offline) time from the `AverageOnlineTime(s)` (`AverageOfflineTime(s)`) of the last entry.
 
 Can see:
 -  As $t$ increases, ShieldReduce takes more (less) time in the inline (offline) stage.
@@ -571,7 +573,7 @@ BackupID, OnlineSpeed(MB/s), OnlineTime(s), AverageOnlineTime(s), BackupSize, On
 ...
 ```
 
-You can obtain the average online (offline) time from the `AverageOnlineTime(s)` (`AverageOfflineTime(s)`) in the last entry.
+You can obtain the average offline time from the `AverageOfflineTime(s)` of the last entry.
 
 Can see:
 -  As $\alpha$ increases, ShieldReduce takes less time in the offline stage.
@@ -680,7 +682,7 @@ Backup ID, FPindex, FPindex (%), SFindex, SFindex (%), Deltaindex, Deltaindex (%
 ...
 ```
 
-You can obtain the fraction of index size over logical size from the `FPindex (%)` (`SFindex (%)` and `Deltaindex (%)`) of the last entry.
+You can obtain the fraction of index size over logical size from the `FPindex (%)`, `SFindex (%)` and `Deltaindex (%)` of the last entry.
 
 Can see:
 -  As $\alpha$ increases, the logical size of delta index takes decreases.
