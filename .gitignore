@@ -1,0 +1,6 @@
+vm*
+.tar
+bin/
+lib/
+build/
+.vscode/
