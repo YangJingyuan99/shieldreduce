@@ -9,3 +9,5 @@ ram-client/
 .qcow2
 .csv
 *.csv
+.png
+*.png
