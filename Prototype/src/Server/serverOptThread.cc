@@ -88,8 +88,17 @@ ServerOptThread::ServerOptThread(SSLConnection* dataSecureChannel,
   if (!tool::FileExist(breakdownFileName_)) {
         // if the log file not exist, add the header
         breakdownFile_.open(breakdownFileName_, ios_base::out);
-        breakdownFile_ <<"Backup ID,"<<"Backup Size(MB),"<<"dataTranTime(us/MB),"<<"fpTime(ms/MB),"<<"freqTime(ms/MB),"<<"firstDedupTime(ms/MB),"<<"secondDedupTime(ms/MB),"<<"total_dedupTime(ms/MB),"
-        <<"sfTime(ms/MB),"<<"checkTime(ms/MB),"<<"lz4compressTime(ms/MB),"<<"deltacompressTime(ms/MB),"<<"encTime(ms/MB),"<<"Total size(MB)"<<endl;
+        breakdownFile_ 
+        << "Backup ID,"
+        << "dataTranTime(ms/MB),"
+        << "total_dedupTime(ms/MB),"
+        << "sfTime(ms/MB),"
+        << "checkTime(ms/MB),"
+        << "lz4compressTime(ms/MB),"
+        << "deltacompressTime(ms/MB),"
+        << "encTime(ms/MB),"
+        << "Total size(MB)"
+        <<endl;
     } else {
         // the log file exists
         breakdownFile_.open(breakdownFileName_, ios_base::app | ios_base::out);
@@ -567,17 +576,14 @@ void ServerOptThread::Run(SSL* clientSSL) {
     total_backupsize += dataMB;
     total_keyExchangeTime += keyExchangeTime;
     double total_dedupTime = enclaveInfo.fpTime+enclaveInfo.freqTime+enclaveInfo.firstDedupTime+enclaveInfo.secondDedupTime;
-    breakdownFile_ << backupid << "," << dataMB << "," <<(enclaveInfo.dataTranTime + total_keyExchangeTime * 1000.0)/total_backupsize<<","
-    <<enclaveInfo.fpTime/total_backupsize<<","
-    <<enclaveInfo.freqTime/total_backupsize<<","
-    <<enclaveInfo.firstDedupTime/total_backupsize<<","
-    <<enclaveInfo.secondDedupTime/total_backupsize<<","
-    <<total_dedupTime/total_backupsize<<","
-    <<enclaveInfo.sfTime/total_backupsize<<","
-    <<enclaveInfo.checkTime/total_backupsize<<","
-    <<enclaveInfo.lz4compressTime/total_backupsize<<","
-    <<enclaveInfo.deltacompressTime/total_backupsize<<","
-    <<enclaveInfo.encTime/total_backupsize<<","<<to_string(total_backupsize)<<endl;
+    breakdownFile_ << backupid << "," 
+    << (enclaveInfo.dataTranTime + total_keyExchangeTime * 1000.0)/total_backupsize << ","
+    << total_dedupTime/total_backupsize<< ","
+    << enclaveInfo.sfTime/total_backupsize<< ","
+    << enclaveInfo.checkTime/total_backupsize<< ","
+    << enclaveInfo.lz4compressTime/total_backupsize<< ","
+    << enclaveInfo.deltacompressTime/total_backupsize<< ","
+    << enclaveInfo.encTime/total_backupsize << "," << to_string(total_backupsize) << endl;
     breakdownFile_.flush();
 #endif
 
@@ -657,7 +663,7 @@ void ServerOptThread::Run(SSL* clientSSL) {
         clientID, totalTime);
     tool::Logging(myName_.c_str(), "total key exchange time of client %u: %lf\n", 
         clientID, keyExchangeTime); 
-
+    
     return ;
 }
 

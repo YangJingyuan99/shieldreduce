@@ -47,6 +47,11 @@ systemctl enable --now aesmd.service
 
 - When building SGX SSL, you may need build tools for building SGX SDK, please refer: [link](https://github.com/intel/linux-sgx?tab=readme-ov-file#prerequisites)
 
+- You may need to execute the following command to enable sgx:
+```bash
+sudo /sbin/modprobe intel_sgx
+```
+
 # Build & Usage
 
 ## Traces

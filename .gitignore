@@ -5,3 +5,7 @@ bin/
 lib/
 build/
 .vscode/
+ram-client/
+.qcow2
+.csv
+*.csv
