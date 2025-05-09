@@ -34,8 +34,8 @@ if [ "$current_dir_name" != "atc25shieldreduce" ]; then
   exit 1
 fi
 
-# clean exp1 result
-find ./Result/exp1 -type f ! -name "*.txt" ! -name "*.py" -delete
+# clean exp7 result
+find ./Result/exp7 -type f ! -name "*.txt" ! -name "*.py" -delete
 echo "clean result success."
 
 # init build
@@ -47,12 +47,13 @@ cd ../
 ####
 # evaluate ShieldReduce and baselines
 ####
-baselineIDs=(4 0 1 2)
+baselineIDs=(4 0 1 2 3)
 declare -A name_prefixes
 name_prefixes[0]="SecureMeGA"
 name_prefixes[1]="DEBE"
 name_prefixes[2]="ForwardDelta"
 name_prefixes[4]="ShieldReduce"
+name_prefixes[3]="WithOutOffload"
 
 for baselineID in "${baselineIDs[@]}"
 do
@@ -76,48 +77,19 @@ do
   kill -9 $server_pid
   sleep 1
   prefix=${name_prefixes[$baselineID]}
-  cp ./Prototype/bin/server-log ./Result/exp1/${prefix}_serverlog.csv
-done
-
-####
-# evaluate ShieldReduce with different alpha
-####
-thresholds=(0.5 0.7 1.0)
-
-for threshold in "${thresholds[@]}"
-do
-  cd ./Prototype
-  bash ./script/default/reset_default.sh
-  sed -i "39s/#define GREEDY_THRESHOLD [0-9]\+\.[0-9]\+/#define GREEDY_THRESHOLD $threshold/" ./include/constVar.h
-  bash ./recompile.sh
-  cd ./bin 
-  ./ShieldReduceServer -m 4 > serveroutput 2>&1 &
-  server_pid=$!
-  cd ../../
-  echo "wait server start..." && sleep 5 && echo "ok"
-  ssh root@172.28.114.116 "cd /root/atc25shieldreduce && bash ./ClientScript/${dataset_name}Up.sh"
-
-  # close server
-  echo "wait the server to complete offline delta compression.."
-  while true; do
-    if tail -n 1 ./Prototype/bin/serveroutput | grep -q "total key exchange time of client"; then
-        break
-    fi
-    sleep 1
-  done
-  echo "offline delta compression done."
-  kill -9 $server_pid
-  sleep 1
-  
-  threshold_str=$(echo $threshold | sed 's/0\./a0/g' | sed 's/1\.0/a10/g')
-  cp ./Prototype/bin/server-log ./Result/exp1/${threshold_str}_serverlog.csv
+  cp ./Prototype/bin/sgx-log ./Result/exp7/${prefix}_sgxlog.csv
+  cp ./Prototype/bin/reduction-log ./Result/exp7/${prefix}_reductionlog.csv
 done
 
 # show result
-cd ./Result/exp1
+cd ./Result/exp7
 echo "------------------------"
-echo "Exp#1: overall data reduction ratio (dataset: ${dataset_name})"
+echo "Exp#7: enclave overhead (dataset: ${dataset_name})"
 echo "------------------------"
-python3 ./ShowResult.py
+echo "Enclave overhead"
+python3 ./ShowResult-baseline.py ${dataset_name}
+echo "------------------------"
+echo "Average amount of data reduced by delta compression per OCall for data transfers and index updates (KiB) with and without delta compression offloading in ShieldReduce"
+python3 ./ShowResult-offload.py ${dataset_name}
 echo "------------------------"
 cd ../../

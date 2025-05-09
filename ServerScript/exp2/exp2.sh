@@ -31,6 +31,7 @@ echo "use dataset: $dataset_name"
 current_dir_name=$(basename "$PWD")
 if [ "$current_dir_name" != "atc25shieldreduce" ]; then
   echo "not the root path, please entre the ./atc25shieldreduce first and run the script again (current dir:$current_dir_name)"
+  exit 1
 fi
 
 # clean exp2 result

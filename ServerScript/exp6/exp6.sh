@@ -34,8 +34,8 @@ if [ "$current_dir_name" != "atc25shieldreduce" ]; then
   exit 1
 fi
 
-# clean exp1 result
-find ./Result/exp1 -type f ! -name "*.txt" ! -name "*.py" -delete
+# clean exp6 result
+find ./Result/exp6 -type f ! -name "*.txt" ! -name "*.py" -delete
 echo "clean result success."
 
 # init build
@@ -45,44 +45,9 @@ bash ./setup.sh
 cd ../
 
 ####
-# evaluate ShieldReduce and baselines
-####
-baselineIDs=(4 0 1 2)
-declare -A name_prefixes
-name_prefixes[0]="SecureMeGA"
-name_prefixes[1]="DEBE"
-name_prefixes[2]="ForwardDelta"
-name_prefixes[4]="ShieldReduce"
-
-for baselineID in "${baselineIDs[@]}"
-do
-  cd ./Prototype && bash ./recompile.sh
-  cd ./bin 
-  ./ShieldReduceServer -m $baselineID > serveroutput 2>&1 &
-  server_pid=$!
-  cd ../../
-  echo "wait server start..." && sleep 5 && echo "ok"
-  ssh root@172.28.114.116 "cd /root/atc25shieldreduce && bash ./ClientScript/${dataset_name}Up.sh"
-
-  # close server
-  echo "wait the server to complete offline delta compression.."
-  while true; do
-    if tail -n 1 ./Prototype/bin/serveroutput | grep -q "total key exchange time of client"; then
-        break
-    fi
-    sleep 1
-  done
-  echo "offline delta compression done."
-  kill -9 $server_pid
-  sleep 1
-  prefix=${name_prefixes[$baselineID]}
-  cp ./Prototype/bin/server-log ./Result/exp1/${prefix}_serverlog.csv
-done
-
-####
 # evaluate ShieldReduce with different alpha
 ####
-thresholds=(0.5 0.7 1.0)
+thresholds=(0.0 0.5 0.7 0.9 1.0)
 
 for threshold in "${thresholds[@]}"
 do
@@ -110,14 +75,15 @@ do
   sleep 1
   
   threshold_str=$(echo $threshold | sed 's/0\./a0/g' | sed 's/1\.0/a10/g')
-  cp ./Prototype/bin/server-log ./Result/exp1/${threshold_str}_serverlog.csv
+  cp ./Prototype/bin/indexsize-log ./Result/exp6/${threshold_str}_indexsizelog.csv
 done
 
 # show result
-cd ./Result/exp1
+cd ./Result/exp6
 echo "------------------------"
-echo "Exp#1: overall data reduction ratio (dataset: ${dataset_name})"
+echo "Exp#6: analysis of index overhead (dataset: ${dataset_name})"
 echo "------------------------"
-python3 ./ShowResult.py
+python3 ./ShowResult-a.py ${dataset_name}
+python3 ./ShowResult-all.py ${dataset_name}
 echo "------------------------"
 cd ../../

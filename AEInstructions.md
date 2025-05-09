@@ -81,9 +81,10 @@ In the storage server machine:
 ```shell
 # reset
 $ cd ./Prototype && bash ./recompile.sh
-# execute baselines via setting different parameter m
-# 0: SecureMeGA, 1: DEBE, 2: ForwardDelta, 4: ShieldReduce
-$ cd ./bin && ./ShieldReduceServer -m 3
+# execute baselines via setting parameter m with different value
+# Option for m: 0-SecureMeGA, 1-DEBE, 2-ForwardDelta, 4-ShieldReduce
+# Take SecureMeGA as example
+$ cd ./bin && ./ShieldReduceServer -m 0
 2025-05-07 22:52:42 <ShieldReduceServer>: In GC, cloud will merge base container
 ...
 ...
@@ -341,7 +342,7 @@ $ cp ./u{client id} ./ram-client/
 To reproduce the *redundant* result, you can directly copy simos into ramdisk by:
 
 ```shell
-$ cp ./dataset/redundant/vm{client id}-1 ./ram-client/
+$ cp ./Dataset/redundant/vm{client id}-1 ./ram-client/
 ```
 
 - **Step-2: evaluate the upload speed**
