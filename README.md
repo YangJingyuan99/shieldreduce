@@ -6,9 +6,10 @@ ShieldReduce is an outsourced storage system that improves storage efficiency vi
 
 - `./Prototype`: includes the implementation of ShieldReduce prototype.
 - `./MuiltiClient`: includes the implementation of a parallelized processing of ShieldReduce prototype (dedicated to Exp#4).
-- `./Result`: includes several empty folders to temporarily store the results of each evaluation.
-- `./Dataset`: includes scripts to get datasets used in our paper, and several empty folders to temporarily store datasets.
-- `./ClientScrpit`: includes several script examples to perform our experiments. 
+- `./Result`: includes several scripts to show results and empty folders to temporarily store the results of each evaluation.
+- `./Dataset`: includes scripts to get datasets used in our paper, and several empty folders to temporarily store them.
+- `./ClientScrpit`: includes several sample client-side scripts that will be run to perform our experiments. 
+- `./ServerScrpit`: includes several sample server-side scripts that will be run to perform our experiments.
 
 ## Publicatoin
 

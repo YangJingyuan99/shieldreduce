@@ -36,7 +36,7 @@ static const char ENCLAVE_PATH[] = "../lib/storeEnclave.signed.so";
 #define SGX_INFO 1
 
 #define OFFLINE_THRESHOLD 0.03
-#define GREEDY_THRESHOLD 1.0
+#define GREEDY_THRESHOLD 0.0
 #define CONTAINER_SEPARATE 1
 #define SF_SINGLE_THREAD 0
 #define MeGA_THRESOLD 3

@@ -138,10 +138,13 @@ Aggregate download speed: 176.78 MiB/s
 ```
 
 ### Exp#5 (Sensitivity of configurable parameters)
+
+**Note that:** due to the limited number of versions, the impact of $t$ on inline performance is limited.  
+
 Runtime estimation:
-- Linux: about 30 min;
-- Docker: about 30 min;
-- SimOS: about 150 min;
+- Linux: about 45 min;
+- Docker: about 45 min;
+- SimOS: about 180 min;
 
 Run the following command:
 
@@ -182,6 +185,8 @@ Can see:
 -  As $\alpha$ increases, ShieldReduce takes less time in the offline stage.
 
 ### Exp#6 (Index overhead)
+**Note that:** due to the limited number of versions, the feature index overhead may be higher, since the base chunk takes a larger percentage in unique chunks.
+
 Runtime estimation:
 - Linux: about 15 min;
 - Docker: about 15 min;
@@ -215,6 +220,9 @@ Can see:
 -  As $\alpha$ increases, the logical size of delta index takes decreases.
 
 ### Exp#7 (Enclave overhead)
+
+**Note that:** due to the limited number of versions, the gain in "with offloading" design is limited.
+
 Runtime estimation:
 - Linux: about 15 min;
 - Docker: about 15 min;
