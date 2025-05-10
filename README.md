@@ -352,5 +352,6 @@ You can use `ctrl + c` to stop the server in the server machine
 
 #### How to Evaluate
 
-Please refer to the `AEInstructions.md` for detailed instructions to reproduce the experiments in our paper.
+- You can refer to the `AEInstructions.md` for detailed instructions to reproduce the experiments in our paper.
+- Also, you can refer to the `SimpleExperiments.md` to reproduce the experiments easily. 
 

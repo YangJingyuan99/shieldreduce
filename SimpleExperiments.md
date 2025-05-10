@@ -1,8 +1,9 @@
 # Evaluation on our hardware
 Here are the instructions to perform the same experiments in our paper **Quickly**. 
 - If you are using the machines we provide, then you can run the scripts in `./ServerScript` directly to reproduce experiments.
+- If you are using your own configured machine, scripts will not work directly. Nevertheless, we believe that the scripts we provide are still available, only requiring you to make slight changes to the scripts (e.g. the IP addresses that appear in the scripts)
 
-**Note that:** In order to fully reproduce the data in our paper, you would need to process **hundreds** of versions of backups for each dataset, which would **take a very large amount of time**. For example, processing 209 versions of Linux backups once would take about 30 hours (you would also need to test baselines and ShieldReduce with different parameters, which means an experiment would take hundreds of hours...). **Therefore, the script we provide will only process 10 versions of backups, which will lead to a discrepancy between the numbers and that presented in our paper on some experiments. Nevertheless, we think that the data obtained from the test will still show the same trends as the data in our paper and will not affect the correctness of the conclusions in our paper.**
+**Note that:** In order to fully reproduce the data in our paper, you would need to process **hundreds** of versions of backups for each dataset, which would **take a very large amount of time**. For example, processing 209 versions of Linux backups once would take about 30 hours (you would also need to test baselines and ShieldReduce with different parameters, which means an experiment would take hundreds of hours...). **Therefore, the script we provide will only process 10 versions of backups, which will lead to a discrepancy between the numbers and that presented in our paper on some experiments. Nevertheless, we believe that the data obtained from the short test will still show the same trends as the data in our paper and will not affect the correctness of the conclusions in our paper.**
 
 ## Storage Efficiency
 
@@ -105,6 +106,8 @@ Can see:
 Runtime estimation:
 - Unique: about 5 min;
 - Redundant: about 10 min;
+
+**Note that:** due to the number of machines, we only tested the performance of one and two clients uploading and downloading at the same time.
 
 Run the following command:
 
