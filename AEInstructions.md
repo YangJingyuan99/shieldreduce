@@ -2,7 +2,7 @@
 Here are the detailed instructions to perform the same experiments in our paper.
 
 ## Artifact claims
-We claim that **the resultant numbers might be different** from in our paper due to various factors (e.g., different machines, different OS, different software packages...). Nevertheless, we expect that ShieldReduce should still outperform the baseline approaches in terms of performance and storage efficiency.
+We claim that **the resultant numbers might be different** from those in our paper due to various factors (e.g., different machines, different OS, different software packages...). Nevertheless, we expect that ShieldReduce should still outperform the baseline approaches in terms of performance and storage efficiency.
 
 Also, to ensure the results are stable, you may need to disable the swap space in your machine.
 
@@ -50,7 +50,7 @@ $ cd ./bin && ./ShieldReduceServer -m 4
 2025-05-07 16:27:09 <ShieldReduceServer>: waiting the request from the client.
 ```
 
-In the client machine (take **Linux** as an example to demonstrate the workflow, you can evaluate different datasets by performing different script in `./ClientScript`):
+In the client machine (take **Linux** as an example to demonstrate the workflow, you can evaluate different datasets by performing different scripts in `./ClientScript`):
 
 ```shell
 # **Ensure all corresponding datasets are ready in the correct path**
@@ -91,7 +91,7 @@ $ cd ./bin && ./ShieldReduceServer -m 0
 2025-05-07 22:52:44 <ShieldReduceServer>: waiting the request from the client.
 ```
 
-In the client machine (take **Linux** as an example to demonstrate the workflow, you can evaluate different datasets by performing different script in `./ClientScript`):
+In the client machine (take **Linux** as an example to demonstrate the workflow, you can evaluate different datasets by performing different scripts in `./ClientScript`):
 
 ```shell
 # Upload ten backups sequentially
@@ -139,7 +139,7 @@ $ cd ./bin && ./ShieldReduceServer -m 4
 2025-05-07 22:52:44 <ShieldReduceServer>: waiting the request from the client.
 ```
 
-In the client machine (take **Linux** as an example to demonstrate the workflow, you can evaluate different datasets by performing different script in `./ClientScript`):
+In the client machine (take **Linux** as an example to demonstrate the workflow, you can evaluate different datasets by performing different scripts in `./ClientScript`):
 
 ```shell
 # Upload ten backups sequentially
@@ -218,7 +218,7 @@ In the client machine:
 
 ```shell
 # **Ensure you are in the root path of the repository**
-# prepare a 10GiB ramdisk in "~/ram-client/"
+# prepare a 10GiB ramdisk at "~/ram-client/"
 $ mkdir -p ./ram-client/
 $ sudo mount -t tmpfs -o rw,size=10G tmpfs ./ram-client/
 $ cd ./Prototype && bash ./setup.sh && cd ..
@@ -239,7 +239,7 @@ $ cd ./bin && ./ShieldReduceServer -m 4
 2025-05-07 16:27:09 <ShieldReduceServer>: waiting the request from the client.
 ```
 
-In the client machine (take **Linux** as an example to demonstrate the workflow, you can evaluate different datasets by performing different script in `./ClientScript`):
+In the client machine (take **Linux** as an example to demonstrate the workflow, you can evaluate different datasets by performing different scripts in `./ClientScript`):
 
 ```shell
 # **Ensure all corresponding datasets are ready in the correct path**
@@ -292,7 +292,7 @@ $ sudo umount -l ./ram-client/
 
 ### Exp#3 (Inline performance)
 
-The testing process for Exp#3 is exactly the same as for Exp#1, you just need to avoid testing ShieldReduce that with different $\alpha$ (step-4).
+The testing process for Exp#3 is exactly the same as for Exp#1, you just need to skip testing ShieldReduce with different $\alpha$ (step-4).
 
 You can obtain the upload speed from `OnlineSpeed(MB/s)` of each entry in `serverlog.csv`:
 
@@ -312,7 +312,7 @@ Can see:
 
 ### Exp#4 (Multi-client performance)
 
-**Note that**: you need to deploy multiple clients in different machines and each client has a unique id. Please ensure that `./MultiClient/config.json` is correctly configured.
+**Note that**: you need to deploy multiple clients on different machines and each client has a unique id. Please ensure that `./MultiClient/config.json` is correctly configured.
 
 - **Step-1: preparation**
 
@@ -329,10 +329,10 @@ In each client machine:
 
 ```shell
 # **Ensure you are in the root path of the repository**
-# prepare a 10GiB ramdisk in "~/ram-client/"
+# prepare a 10GiB ramdisk at "~/ram-client/"
 $ mkdir -p ./ram-client/
 $ sudo mount -t tmpfs -o rw,size=10G tmpfs ./ram-client/
-# create unique file
+# create unique files
 $ dd if=/dev/urandom of=u{client id} bs=1M count=2048
 # copy the data file into the ramdisk (take Redundant as an example)
 # **Ensure that each client uploads files with different names**
@@ -379,7 +379,7 @@ total thread running time: 51.606819
 Execution time: 52.438 seconds
 ```
 
-In the above example, the aggreated upload speed is 2048 * 5 / 52.438 = 195.278 MiB/s
+In the above example, the aggregated upload speed is 2048 * 5 / 52.438 = 195.278 MiB/s
 
 - **Step-3: evaluate the download speed**
 
@@ -398,7 +398,7 @@ write data size: 2147483648
 Execution time: 58.451 seconds
 ```
 
-In the above example, the aggreated download speed is 2048 * 5 / 58.451 = 175.189 MiB/s
+In the above example, the aggregated download speed is 2048 * 5 / 58.451 = 175.189 MiB/s
 
 - **Step-4: clean up**
 
@@ -459,7 +459,7 @@ $ cd ./bin && ./ShieldReduceServer -m 4
 2025-05-07 22:52:44 <ShieldReduceServer>: waiting the request from the client.
 ```
 
-In the client machine (take **Linux** as an example to demonstrate the workflow, you can evaluate different datasets by performing different script in `./ClientScript`):
+In the client machine (take **Linux** as an example to demonstrate the workflow, you can evaluate different datasets by performing different scripts in `./ClientScript`):
 
 ```shell
 # Upload ten backups sequentially
@@ -534,7 +534,7 @@ $ cd ./bin && ./ShieldReduceServer -m 4
 ...
 2025-05-07 22:52:44 <ShieldReduceServer>: waiting the request from the client.
 ```
-In the client machine (take **Linux** as an example to demonstrate the workflow, you can evaluate different datasets by performing different script in `./ClientScript`):
+In the client machine (take **Linux** as an example to demonstrate the workflow, you can evaluate different datasets by performing different scripts in `./ClientScript`):
 
 ```shell
 # Upload ten backups sequentially
@@ -641,7 +641,7 @@ $ cd ./bin && ./ShieldReduceServer -m 4
 2025-05-07 22:52:44 <ShieldReduceServer>: waiting the request from the client.
 ```
 
-In the client machine (take **Linux** as an example to demonstrate the workflow, you can evaluate different datasets by performing different script in `./ClientScript`):
+In the client machine (take **Linux** as an example to demonstrate the workflow, you can evaluate different datasets by performing different scripts in `./ClientScript`):
 
 ```shell
 # Upload ten backups sequentially
@@ -736,7 +736,7 @@ $ cd ./bin && ./ShieldReduceServer -m 4
 2025-05-07 16:27:09 <ShieldReduceServer>: waiting the request from the client.
 ```
 
-In the client machine (take **Linux** as an example to demonstrate the workflow, you can evaluate different datasets by performing different script in `./ClientScript`):
+In the client machine (take **Linux** as an example to demonstrate the workflow, you can evaluate different datasets by performing different scripts in `./ClientScript`):
 
 ```shell
 # **Ensure all corresponding datasets are ready in the correct path**
@@ -778,7 +778,7 @@ $ cd ./bin && ./ShieldReduceServer -m 1
 2025-05-07 22:52:44 <ShieldReduceServer>: waiting the request from the client.
 ```
 
-In the client machine (take **Linux** as an example to demonstrate the workflow, you can evaluate different datasets by performing different script in `./ClientScript`):
+In the client machine (take **Linux** as an example to demonstrate the workflow, you can evaluate different datasets by performing different scripts in `./ClientScript`):
 
 ```shell
 # Upload ten backups sequentially
@@ -840,7 +840,7 @@ You can obtain the result from the `Online Delta_save per OCall` of the last ent
 Can see:
 -  ShieldReduce (with offloading) has more data reduction per OCall compared to without offloading.
 
-**Note that:** Due to the limited versions of backup, the result of ShieldReduce (with offloading) may not much better than without offloading.
+**Note that:** Due to the limited versions of backup, the result of ShieldReduce (with offloading) may not be much better than without offloading.
 
 - **Step-5: clean up**
 

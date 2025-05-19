@@ -1,9 +1,9 @@
-# Evaluation on our hardware
+# Evaluation on Our Hardware
 Here are the instructions to perform the same experiments in our paper **Quickly**. 
 - If you are using the machines we provide, then you can run the scripts in `./ServerScript` directly to reproduce experiments.
-- If you are using your own configured machine, scripts will not work directly. Nevertheless, we believe that the scripts we provide are still available, only requiring you to make slight changes to the scripts (e.g. the IP addresses that appear in the scripts)
+- If you are using your own configured machine, scripts will not work directly. Nevertheless, we believe that the scripts we provide are still usable, only requiring you to make slight changes to the scripts (e.g. the IP addresses that appear in the scripts)
 
-**Note that:** In order to fully reproduce the data in our paper, you would need to process **hundreds** of versions of backups for each dataset, which would **take a very large amount of time**. For example, processing 209 versions of Linux backups once would take about 30 hours (you would also need to test baselines and ShieldReduce with different parameters, which means an experiment would take hundreds of hours...). **Therefore, the script we provide will only process 10 versions of backups, which will lead to a discrepancy between the numbers and that presented in our paper on some experiments. Nevertheless, we believe that the data obtained from the short test will still show the same trends as the data in our paper and will not affect the correctness of the conclusions in our paper.**
+**Note that:** In order to fully reproduce the data in our paper, you would need to process **hundreds** of versions of backups for each dataset, which would **take a very large amount of time**. For example, processing 209 versions of Linux backups once would take about 30 hours (you would also need to test baselines and ShieldReduce with different parameters, which means an experiment would take hundreds of hours...). **Therefore, the script we provide will only process 10 versions of backups, which will lead to a discrepancy between the numbers and that presented in our paper on some experiments. Nevertheless, we believe that the data obtained from the short test will still reflect the same trends as the data in our paper and will not affect the correctness of the conclusions in our paper.**
 
 ## Storage Efficiency
 
@@ -21,7 +21,7 @@ Run the following command:
 $ bash ./ServerScript/exp1/exp1.sh docker
 ```
 
-After finish, you can get the data from the terminal:
+Once completed, you can get the data from the terminal:
 ```
 # 'a07' means the result of alpha=0.7
 ------------------------
@@ -58,7 +58,7 @@ Run the following command:
 $ bash ./ServerScript/exp2/exp2.sh docker
 ```
 
-After finish, you can get the data from the terminal:
+Once completed, you can get the data from the terminal:
 ```
 ------------------------
 Exp#2: microbenchmarks (dataset: docker)
@@ -88,7 +88,7 @@ Run the following command:
 $ bash ./ServerScript/exp3/exp3.sh docker
 ```
 
-After finish, you can see the following output and get the figure from `./Result/exp3/Exp3-{dataset name}.png`:
+Once completed, you can see the following output and get the figure from `./Result/exp3/Exp3-{dataset name}.png`:
 ```
 ------------------------
 Exp#3: inline performance (dataset: docker)
@@ -117,7 +117,7 @@ Run the following command:
 $ bash ./ServerScript/exp4/exp4.sh unique
 ```
 
-After finish, you can get the result from `./Result/exp4/result`:
+Once completed, you can get the result from `./Result/exp4/result`:
 ```
 ------------------------
 Exp#4: multi-client performance (dataset: unique)
@@ -154,7 +154,7 @@ Run the following command:
 $ bash ./ServerScript/exp5/exp5.sh docker
 ```
 
-After finish, you can see the following output and get the figure from `./Result/exp5/impact_t_{dataset name}.png` and `./Result/exp5/impact_alpha_{dataset name}.png`:
+Once completed, you can see the following output and get the figure from `./Result/exp5/impact_t_{dataset name}.png` and `./Result/exp5/impact_alpha_{dataset name}.png`:
 ```
 ------------------------
 Exp#5: sensitivity of configurable parameters (dataset: docker)
@@ -200,7 +200,7 @@ Run the following command:
 $ bash ./ServerScript/exp6/exp6.sh docker
 ```
 
-After finish, you can see the following output and get the figure from `./Result/exp5/impact_alpha_{dataset name}.png` and `./Result/exp5/index_overhead_{dataset name}.png`:
+Once completed, you can see the following output and get the figure from `./Result/exp5/impact_alpha_{dataset name}.png` and `./Result/exp5/index_overhead_{dataset name}.png`:
 
 ```
 ------------------------
@@ -217,11 +217,11 @@ Bar chart saved as impact_t_docker.png
 ```
 
 Can see:
--  As $\alpha$ increases, the logical size of delta index takes decreases.
+-  As $\alpha$ increases, the logical size of delta index decreases.
 
 ### Exp#7 (Enclave overhead)
 
-**Note that:** due to the limited number of versions, the gain in "with offloading" design is limited.
+**Note that:** due to the limited number of versions, the gain from "with offloading" design is limited.
 
 Runtime estimation:
 - Linux: about 15 min;
@@ -236,7 +236,7 @@ Run the following command:
 $ bash ./ServerScript/exp7/exp7.sh docker
 ```
 
-After finish, you can get the data from the terminal:
+Once completed, you can get the data from the terminal:
 
 ```
 ------------------------
