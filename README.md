@@ -1,4 +1,4 @@
-# ShieldReduce(ATC25)
+# ShieldReduce (ATC25)
 
 ## Introduction
 
@@ -59,7 +59,7 @@ sudo /sbin/modprobe intel_sgx
 
 ## Traces
 
-We use three real-world datasets to drive our evaluation:
+We use three real-world datasets to drive our evaluation: 
 (i) Linux, which includes 209 snapshots (from v2.6.11 to v6.4-rc7) of Linux source code;   
 (ii) Web, which includes 78 versions (from June 13 to September 1 in 2016) of website backups of news.sina.com;  
 (iii) Docker, which includes 95 versions  (from v2.1.14 to v4.1) of Docker image snapshots of Cassandra downloaded from Docker Hub.  
